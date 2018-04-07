@@ -1,0 +1,8 @@
+{
+  "name": "CamerounOnline",
+  "app_id": "cb50d834",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
