@@ -1,0 +1,46 @@
+<!--
+  Generated template for the ArticlePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+        {{info.node.title}}
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="{{info.node.Imagedescriptives}}">
+  
+    <h2 style="text-align: center;">{{info.node.title}}</h2>
+    <br>
+    {{info.node.Date}} par <b>{{info.node.dernier}}</b>
+    <hr>
+    
+   <div >Vue aujourd'hui par: <span style="color:red;">
+    
+      <span [innerHTML] = info.node.Affichages> </span></span> internautes</div>
+    <br>
+    <br>
+    <h3 style="color:blue;">Description:</h3>
+    <p style="text-align: justify; font-size: 17px; color:#888888;"><span style="text-decoration:none;"[innerHTML] = info.node.brevedescription> </span></p>
+    <br>
+    <h3 style="color:red;">Article:</h3>
+    <p style="text-align: justify; font-size: 17px; color:#888888;">
+        <span [innerHTML] = info.node.Corps> </span>
+     </p>
+     <div class="sharearticle">
+        
+            <button ion-button icon-start clear small full color="secondary" (click)="share(user.node.title,user.node.Corps,user.node.Imagedescriptives,user.node.Lien)">
+              PARTAGE
+            </button>
+          
+     </div>
+
+</ion-content>

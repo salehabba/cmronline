@@ -1,18 +1,94 @@
+<div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <img src="../../assets/imgs/cmronline.png">
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div>
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    
+    <button ion-button menuToggle="left" side="left">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title style="text-align:center;">Fil Infos</ion-title>     
+    <ion-buttons end ion-button >
+        <button ion-button icon-only menuToggle="right"  side="right" >
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
+  <div>
+      <ion-segment [(ngModel)]="pet">
+        
+        <ion-segment-button value="filinfos">
+          Fil d'infos
+        </ion-segment-button>
+        <ion-segment-button value="semaine">
+            7 semaine
+          </ion-segment-button>
+      </ion-segment>
+    </div>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content padding class="card-background-page">
+  <div [ngSwitch]="pet">
+  
+    <ion-list *ngSwitchCase="'filinfos'">
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+      <ion-card *ngFor="let user of users" (click)="article(user)">
+        <img src="{{user.node.Imagedescriptives}}"/>
+        
+        <div class="card-title"> {{user.node.title}}</div>
+        <div class="card-subtitle">{{user.node.rubrique}}</div>
+        <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small full color="secondary" (click)="share()">
+                PARTAGE
+              </button>
+            </ion-col>
+            
+            <ion-col center text-center>
+                <button ion-button icon-start clear small>
+                   
+                    <div>{{user.node.Total}} Vues</div>
+                  </button>
+            
+            </ion-col>
+          </ion-row>
+      </ion-card>
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-list>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+
+
+    
+    <ion-list *ngSwitchCase="'semaine'">
+   
+      <ion-card *ngFor="let user of users7jrs" (click)="article(user)">
+        <img src="{{user.node.Imagedescriptives}}"/>
+        <div class="card-title">
+            <h2 style="color:rgb(9, 151, 9); text-align:center;">
+              <span [innerHTML] = user.node.rubrique></span></h2>
+          <h2 style="color:white; text-align:center;"><span [innerHTML] = user.node.title></span></h2>
+        </div>
+        <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                <ion-icon name="thumbs-up"></ion-icon>
+                <div>PARTAGE</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note>
+                11h ago
+              </ion-note>
+            </ion-col>
+          </ion-row>
+      </ion-card>
+
+    </ion-list>
+  </div>
 </ion-content>

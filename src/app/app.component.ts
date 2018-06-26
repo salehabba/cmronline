@@ -4,27 +4,54 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { ActualitésPage } from '../pages/actualités/actualités';
+import { SocietéPage } from '../pages/societé/societé';
+import { CultureArtPage } from '../pages/culture-art/culture-art';
+import { AnnoncePage } from '../pages/annonce/annonce';
+import { PeoplesPage } from '../pages/peoples/peoples';
+import { FemmesPage } from '../pages/femmes/femmes';
+import { InternationalPage } from '../pages/international/international';
+import { TourismePage } from '../pages/tourisme/tourisme';
+import { AlaunePage} from '../pages/alaune/alaune';
+import { SemainePage} from '../pages/semaine/semaine';
+import { ArticlePage} from '../pages/article/article';
+
+import { MenuController } from 'ionic-angular/components/app/menu-controller';
+
 
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  pages: Array<{title: string, component: any}>;
+  pages2 : Array<{title: string, component: any}>;
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Fil Infos', component: HomePage },
+      { title: 'Actualités', component: ActualitésPage },
+      { title: 'Societé', component: SocietéPage },
+      { title: 'CultureArt', component: CultureArtPage },
+      { title: 'Annonce', component: AnnoncePage },
+      { title: 'Peoples', component: PeoplesPage },
+      { title: 'Femmes', component: FemmesPage },
+      { title: 'International', component: InternationalPage },
+      { title: 'Tourisme', component: TourismePage }
     ];
-
+    this.pages2 = [
+      { title: 'fil', component: AlaunePage },
+      { title: 'semaine', component: SemainePage }
+    ];
+    this.menu.enable(true, 'menu1');
+    this.menu.enable(true, 'menu2');
   }
 
   initializeApp() {
@@ -33,6 +60,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
     });
   }
 

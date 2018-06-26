@@ -1,34 +1,82 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { ActualitésPage } from '../pages/actualités/actualités';
+import { SocietéPage } from '../pages/societé/societé';
+import { CultureArtPage } from '../pages/culture-art/culture-art';
+import { AnnoncePage } from '../pages/annonce/annonce';
+import { PeoplesPage } from '../pages/peoples/peoples';
+import { FemmesPage } from '../pages/femmes/femmes';
+import { InternationalPage } from '../pages/international/international';
+import { TourismePage } from '../pages/tourisme/tourisme';
+import { AlaunePage} from '../pages/alaune/alaune';
+import { SemainePage} from '../pages/semaine/semaine';
+import { ArticlePage} from '../pages/article/article';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpClientModule } from '@angular/common/http';
+import { RestProvider } from '../providers/rest/rest';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ActualitésPage,
+    SocietéPage,
+    CultureArtPage,
+    AnnoncePage,
+    PeoplesPage,
+    FemmesPage,
+    InternationalPage,
+    TourismePage,
+    AlaunePage,
+    SemainePage,
+    ArticlePage,
+ 
+    
+
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ActualitésPage,
+    SocietéPage,
+    CultureArtPage,
+    AnnoncePage,
+    PeoplesPage,
+    FemmesPage,
+    InternationalPage,
+    TourismePage,
+    AlaunePage,
+    SemainePage,
+    ArticlePage,
+
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    RestProvider,
+    SocialSharing
+
   ]
 })
 export class AppModule {}
