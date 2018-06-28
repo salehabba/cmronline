@@ -19,6 +19,7 @@ import 'rxjs/add/operator/map';
 export class ActualitésPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+    this.loadJson();
   }
 
   ionViewDidLoad() {
@@ -27,14 +28,16 @@ export class ActualitésPage {
   users:any;
 
   loadJson(){
-   this.http.get('https://www.cameroun-online.com/fr/ionic')
-   .map(res => res.json())
-   .subscribe(res =>{
-     this.users = res.nodes;
-   },(err)=>{
-     alert("erreur chargement Json");
-   });
-  }
+    this.http.get('https://www.cameroun-online.com/fr/ionic')
+    .map(res => res.json())
+    .subscribe(res =>{
+      this.users = res.nodes;
+      console.log(this.users.node);
+    },(err)=>{
+      alert("Erreur chargement vérifier votre connexion internet");
+    });
+    
+   }
 
 }
 

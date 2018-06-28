@@ -22,10 +22,10 @@
       <ion-segment [(ngModel)]="pet">
         
         <ion-segment-button value="filinfos">
-          Fil d'infos
+          A LA UNE
         </ion-segment-button>
         <ion-segment-button value="semaine">
-            7 semaine
+            FIL INFO
           </ion-segment-button>
       </ion-segment>
     </div>
@@ -35,60 +35,56 @@
   <div [ngSwitch]="pet">
   
     <ion-list *ngSwitchCase="'filinfos'">
-
-      <ion-card *ngFor="let user of users" (click)="article(user)">
-        <img src="{{user.node.Imagedescriptives}}"/>
-        
-        <div class="card-title"> {{user.node.title}}</div>
-        <div class="card-subtitle">{{user.node.rubrique}}</div>
-        <ion-row>
-            <ion-col>
-              <button ion-button icon-start clear small full color="secondary" (click)="share()">
-                PARTAGE
-              </button>
-            </ion-col>
-            
-            <ion-col center text-center>
-                <button ion-button icon-start clear small>
-                   
-                    <div>{{user.node.Total}} Vues</div>
+        <ion-card *ngFor="let user of users7jrs" (click)="article(user)">
+            <img src="{{user.node.Imagedescriptives}}"/>
+            <div class="card-title"> {{user.node.title}}</div>
+            <div class="card-subtitle">{{user.node.rubrique}}</div>
+            <ion-row>
+                <ion-col>
+                  <button ion-button icon-start clear small>
+                      <ion-icon name="share"></ion-icon>
+                    <div>PARTAGE</div>
                   </button>
-            
-            </ion-col>
-          </ion-row>
-      </ion-card>
+                </ion-col>
+                <ion-col center text-center>
+                    <button ion-button icon-start clear small>
+                       
+                        <div>{{user.node.Total}} Vues</div>
+                      </button>
+                
+                </ion-col>
+              </ion-row>
+          </ion-card>
+     
       <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>
     </ion-list>
-
-
-
     
     <ion-list *ngSwitchCase="'semaine'">
-   
-      <ion-card *ngFor="let user of users7jrs" (click)="article(user)">
-        <img src="{{user.node.Imagedescriptives}}"/>
-        <div class="card-title">
-            <h2 style="color:rgb(9, 151, 9); text-align:center;">
-              <span [innerHTML] = user.node.rubrique></span></h2>
-          <h2 style="color:white; text-align:center;"><span [innerHTML] = user.node.title></span></h2>
-        </div>
-        <ion-row>
-            <ion-col>
-              <button ion-button icon-start clear small>
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>PARTAGE</div>
-              </button>
-            </ion-col>
-            <ion-col center text-center>
-              <ion-note>
-                11h ago
-              </ion-note>
-            </ion-col>
-          </ion-row>
-      </ion-card>
-
+      <ion-card *ngFor="let user of users" (click)="article(user)">
+          <img src="{{user.node.Imagedescriptives}}"/>
+          
+          <div class="card-title"> {{user.node.title}}</div>
+          <div class="card-subtitle">{{user.node.rubrique}}</div>
+          <ion-row>
+              <ion-col>
+                <button ion-button icon-start clear small full color="primary" (click)="share()">
+                    <ion-icon name="share"></ion-icon>
+                  PARTAGE
+                </button>
+                
+              </ion-col>
+              
+              <ion-col center text-center>
+                  <button ion-button icon-start clear small>
+                     
+                      <div>{{user.node.Total}} Vues</div>
+                    </button>
+              
+              </ion-col>
+            </ion-row>
+        </ion-card>
     </ion-list>
   </div>
 </ion-content>

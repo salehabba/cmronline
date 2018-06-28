@@ -21,10 +21,9 @@
     <h2 style="text-align: center;">{{info.node.title}}</h2>
     <br>
     {{info.node.Date}} par <b>{{info.node.dernier}}</b>
-    <hr>
-    
-   <div >Vue aujourd'hui par: <span style="color:red;">
-    
+    <hr>    
+   <div >Vue aujourd'hui par: <span style="color:red;">   
+       
       <span [innerHTML] = info.node.Affichages> </span></span> internautes</div>
     <br>
     <br>
@@ -37,10 +36,12 @@
      </p>
      <div class="sharearticle">
         
-            <button ion-button icon-start clear small full color="secondary" (click)="share(user.node.title,user.node.Corps,user.node.Imagedescriptives,user.node.Lien)">
-              PARTAGE
+            <button ion-button icon-start clear small full color="light" (click)="share(user.node.title,user.node.Corps,user.node.Imagedescriptives,user.node.Lien)">
+                <ion-icon name="share"></ion-icon>
+                PARTAGE
+                
             </button>
-          
+           
      </div>
 
 </ion-content>

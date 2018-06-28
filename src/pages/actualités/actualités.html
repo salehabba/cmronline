@@ -14,16 +14,33 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding> 
-   <button ion-button (click)="loadJson()">
-     Chargement
-   </button>
-   <ion-list>
-   <ion-item *ngFor="let user of users">
-  <ion-avatar item-start>
-    <img src="{{user.node.Imagedescriptives}}">
-  </ion-avatar>
-  
-  <h2>{{user.node[1]}}</h2>
-   </ion-item>
-  </ion-list>
+    <ion-list>
+        <ion-card *ngFor="let user of users" (click)="article(user)">
+            <img src="{{user.node.Imagedescriptives}}"/>
+            <div class="card-title">
+                <h2 style="color:rgb(9, 151, 9); text-align:center;">
+                  <span [innerHTML] = user.node.rubrique></span></h2>
+              <h2 style="color:white; text-align:center;"><span [innerHTML] = user.node.title></span></h2>
+            </div>
+            <ion-row>
+                <ion-col>
+                  <button ion-button icon-start clear small>
+                      <ion-icon name="share"></ion-icon>
+                    <div>PARTAGE</div>
+                  </button>
+                </ion-col>
+                <ion-col center text-center>
+                    <button ion-button icon-start clear small>
+                       
+                        <div>{{user.node.Total}} Vues</div>
+                      </button>
+                
+                </ion-col>
+              </ion-row>
+          </ion-card>
+     
+      <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-list>
 </ion-content>

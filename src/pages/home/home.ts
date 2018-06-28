@@ -9,6 +9,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import 'rxjs/add/operator/map';
 import { ArticlePage } from '../article/article';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -48,6 +49,7 @@ export class HomePage {
        .map(res => res.json())
        .subscribe(res =>{
          this.users = res.nodes;
+         console.log(this.users.node);
        },(err)=>{
          alert("Erreur chargement vérifier votre connexion internet");
        });
@@ -94,7 +96,7 @@ export class HomePage {
         });
       }
      share(){
-      this.socialSharing.share(this.users.node.title, this.users.node.Corps, null, null)
+      this.socialSharing.share(null , this.users.node, null, null)
       .then(() => {
         // Success!
       }).catch(() => {
