@@ -5,9 +5,9 @@ import { HttpModule } from '@angular/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ActualitésPage } from '../pages/actualités/actualités';
 import { SocietéPage } from '../pages/societé/societé';
 import { CultureArtPage } from '../pages/culture-art/culture-art';
 import { AnnoncePage } from '../pages/annonce/annonce';
@@ -18,6 +18,13 @@ import { TourismePage } from '../pages/tourisme/tourisme';
 import { AlaunePage} from '../pages/alaune/alaune';
 import { SemainePage} from '../pages/semaine/semaine';
 import { ArticlePage} from '../pages/article/article';
+import { LanguePage} from '../pages/langue/langue';
+import { NotificationPage} from '../pages/notification/notification';
+import { TalletextePage} from '../pages/talletexte/talletexte';
+import { AidePage} from '../pages/aide/aide';
+import { ContactPage} from '../pages/contact/contact';
+import { EvaluerappliPage} from '../pages/evaluerappli/evaluerappli';
+import { AproposPage} from '../pages/apropos/apropos';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -25,11 +32,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ActualitésPage,
     SocietéPage,
     CultureArtPage,
     AnnoncePage,
@@ -40,6 +47,15 @@ import { RestProvider } from '../providers/rest/rest';
     AlaunePage,
     SemainePage,
     ArticlePage,
+    LanguePage,
+    NotificationPage,
+    TalletextePage,
+    AidePage,
+    ContactPage,
+    EvaluerappliPage,
+    AproposPage
+
+
  
     
 
@@ -56,7 +72,6 @@ import { RestProvider } from '../providers/rest/rest';
   entryComponents: [
     MyApp,
     HomePage,
-    ActualitésPage,
     SocietéPage,
     CultureArtPage,
     AnnoncePage,

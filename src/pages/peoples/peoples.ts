@@ -21,11 +21,11 @@ export class PeoplesPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SocietéPage');
+    
   }
   users:any;
   loadJson(){
-    this.http.get('https://www.cameroun-online.com/fr/ionicsoc')
+    this.http.get('https://www.cameroun-online.com/fr/ionicpeo')
     .map(res => res.json())
     .subscribe(res =>{
       this.users = res.nodes;

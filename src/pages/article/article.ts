@@ -30,12 +30,11 @@ export class ArticlePage {
    
   }
   
-  share(mes,sub,fil,lin){
-    this.socialSharing.share(this.message,this.subject,this.file,this.link)
-    .then(() => {
-      // Success!
+  shareSheetShare() {
+    this.socialSharing.share("Share message", "Share subject", "URL to file or image", "A URL to share").then(() => {
+      console.log("shareSheetShare: Success");
     }).catch(() => {
-      // Error!
+      console.error("shareSheetShare: failed");
     });
-   }
+  }    
 }

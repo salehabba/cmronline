@@ -15,6 +15,13 @@ import { TourismePage } from '../pages/tourisme/tourisme';
 import { AlaunePage} from '../pages/alaune/alaune';
 import { SemainePage} from '../pages/semaine/semaine';
 import { ArticlePage} from '../pages/article/article';
+import { LanguePage} from '../pages/langue/langue';
+import { NotificationPage} from '../pages/notification/notification';
+import { TalletextePage} from '../pages/talletexte/talletexte';
+import { AidePage} from '../pages/aide/aide';
+import { ContactPage} from '../pages/contact/contact';
+import { EvaluerappliPage} from '../pages/evaluerappli/evaluerappli';
+import { AproposPage} from '../pages/apropos/apropos';
 
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
 
@@ -37,7 +44,6 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Fil Infos', component: HomePage },
-      { title: 'Actualités', component: ActualitésPage },
       { title: 'Societé', component: SocietéPage },
       { title: 'CultureArt', component: CultureArtPage },
       { title: 'Annonce', component: AnnoncePage },
@@ -47,9 +53,16 @@ export class MyApp {
       { title: 'Tourisme', component: TourismePage }
     ];
     this.pages2 = [
-      { title: 'fil', component: AlaunePage },
-      { title: 'semaine', component: SemainePage }
+      { title: 'LANGUE', component:  LanguePage },
+      { title: 'NOTIFICATION', component:  NotificationPage },
+      { title: 'TAILLE TEXTE', component: TalletextePage },
+      { title: 'AIDE', component: AidePage },
+      { title: 'CONTACT', component: ContactPage },
+      { title: 'EVALUER APPLI', component: EvaluerappliPage },
+      { title: 'A PROPOS', component: AproposPage }
+      
     ];
+  
     this.menu.enable(true, 'menu1');
     this.menu.enable(true, 'menu2');
   }

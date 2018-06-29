@@ -17,5 +17,29 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-card *ngFor="let user of users" (click)="article(user)">
+        <img src="{{user.node.Imagedescriptives}}"/>
+        <div class="card-title">
+            <h2 style="color:rgb(9, 151, 9); text-align:center;">
+              <span [innerHTML] = user.node.rubrique></span></h2>
+          <h2 style="color:white; text-align:center;"><span [innerHTML] = user.node.title></span></h2>
+        </div>
+        <ion-row>
+            <ion-col>
+              <button ion-button icon-start clear small>
+                  <ion-icon name="share"></ion-icon>
+                <div>PARTAGE</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+                <button ion-button icon-start clear small>
+                   
+                    <div>{{user.node.Total}} Vues</div>
+                  </button>
+            
+            </ion-col>
+          </ion-row>
+      </ion-card>
+    </ion-list>
 </ion-content>

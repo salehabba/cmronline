@@ -21,7 +21,7 @@ export class SocietéPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SocietéPage');
+    
   }
   users:any;
   loadJson(){

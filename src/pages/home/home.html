@@ -6,8 +6,7 @@
   </div>
 </div>
 <ion-header>
-  <ion-navbar>
-    
+  <ion-navbar>    
     <button ion-button menuToggle="left" side="left">
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -19,8 +18,7 @@
       </ion-buttons>
   </ion-navbar>
   <div>
-      <ion-segment [(ngModel)]="pet">
-        
+      <ion-segment [(ngModel)]="pet">        
         <ion-segment-button value="filinfos">
           A LA UNE
         </ion-segment-button>
@@ -30,58 +28,51 @@
       </ion-segment>
     </div>
 </ion-header>
-
 <ion-content padding class="card-background-page">
-  <div [ngSwitch]="pet">
-  
+  <div [ngSwitch]="pet">  
     <ion-list *ngSwitchCase="'filinfos'">
-        <ion-card *ngFor="let user of users7jrs" (click)="article(user)">
-            <img src="{{user.node.Imagedescriptives}}"/>
-            <div class="card-title"> {{user.node.title}}</div>
-            <div class="card-subtitle">{{user.node.rubrique}}</div>
+        <ion-card *ngFor="let user of users7jrs">
+            <img src="{{user.node.Imagedescriptives}}" (click)="article(user)"/>
+            <div class="card-title" (click)="article(user)"> {{user.node.title}}</div>
+            <div class="card-subtitle" (click)="article(user)">{{user.node.rubrique}}</div>
+            <div style="margin-top:25%;">
             <ion-row>
                 <ion-col>
-                  <button ion-button icon-start clear small>
-                      <ion-icon name="share"></ion-icon>
-                    <div>PARTAGE</div>
-                  </button>
+                  <button ion-button icon-start clear small full color="primary" (click)="shareSheetShare()">
+                    <ion-icon name="share"></ion-icon>
+                       PARTAGER
+                </button>
                 </ion-col>
                 <ion-col center text-center>
-                    <button ion-button icon-start clear small>
-                       
+                    <button ion-button icon-start clear small>                       
                         <div>{{user.node.Total}} Vues</div>
-                      </button>
-                
+                      </button>                
                 </ion-col>
               </ion-row>
-          </ion-card>
-     
+            </div>
+          </ion-card>     
       <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
       </ion-infinite-scroll>
-    </ion-list>
-    
+    </ion-list>    
     <ion-list *ngSwitchCase="'semaine'">
-      <ion-card *ngFor="let user of users" (click)="article(user)">
-          <img src="{{user.node.Imagedescriptives}}"/>
+      <ion-card *ngFor="let user of users" >
+          <img src="{{user.node.Imagedescriptives}}" (click)="article(user)"/>
           
-          <div class="card-title"> {{user.node.title}}</div>
-          <div class="card-subtitle">{{user.node.rubrique}}</div>
+          <div class="card-title" (click)="article(user)"> {{user.node.title}}</div>
+          <div class="card-subtitle" (click)="article(user)">{{user.node.rubrique}}</div>
+          <br>
           <ion-row>
               <ion-col>
-                <button ion-button icon-start clear small full color="primary" (click)="share()">
+                <button ion-button icon-start clear small full color="primary" (click)="shareSheetShare()">
                     <ion-icon name="share"></ion-icon>
-                  PARTAGE
-                </button>
-                
-              </ion-col>
-              
+                       PARTAGER
+                </button>                
+              </ion-col>              
               <ion-col center text-center>
-                  <button ion-button icon-start clear small>
-                     
+                  <button ion-button icon-start clear small>                     
                       <div>{{user.node.Total}} Vues</div>
-                    </button>
-              
+                    </button>              
               </ion-col>
             </ion-row>
         </ion-card>

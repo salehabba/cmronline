@@ -29,8 +29,15 @@ export class HomePage {
   use:any;
   splash = true;
   
-  constructor(public navCtrl: NavController,  platform: Platform,
-      public http: Http, private socialSharing: SocialSharing, private toastCtrl:ToastController) {
+  constructor(
+    public navCtrl: NavController,
+      platform: Platform,
+      public http: Http,
+      private socialSharing: SocialSharing,
+      private toastCtrl:ToastController) 
+        {
+
+
       this.isAndroid = platform.is('android');
       this.loadJson();
       this.loadJson7jrs();  
@@ -70,14 +77,9 @@ export class HomePage {
     });
   })
   }
-      getData(){
-        this.data=this.http.get('https://www.cameroun-online.com/fr/ionic');
-        this.data.subscribe(data=>{
-          this.use = data;
-        });
-      }
+      
       loadJson7jrs(){
-        this.http.get('https://www.cameroun-online.com/fr/ionic7jrs')
+        this.http.get('https://www.cameroun-online.com/fr/ionic7')
         .map(res => res.json())
         .subscribe(res =>{
           this.users7jrs = res.nodes;
@@ -95,14 +97,13 @@ export class HomePage {
          'value7jrs':user7jrs
         });
       }
-     share(){
-      this.socialSharing.share(null , this.users.node, null, null)
-      .then(() => {
-        // Success!
-      }).catch(() => {
-        // Error!
-      });
-     }     
+      shareSheetShare() {
+        this.socialSharing.share("Share message", "Share subject", "URL to file or image", "A URL to share").then(() => {
+          console.log("shareSheetShare: Success");
+        }).catch(() => {
+          console.error("shareSheetShare: failed");
+        });
+      }    
      infiniteScrool(ev){
        this.pagination++;
        if(this.type === false){

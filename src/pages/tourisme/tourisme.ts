@@ -25,7 +25,7 @@ export class TourismePage {
   }
   users:any;
   loadJson(){
-    this.http.get('https://www.cameroun-online.com/fr/ionicsoc')
+    this.http.get('https://www.cameroun-online.com/fr/ionictou')
     .map(res => res.json())
     .subscribe(res =>{
       this.users = res.nodes;
