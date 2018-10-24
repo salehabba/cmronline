@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the SemainePage tabs.
@@ -8,7 +8,7 @@ import { IonicPage, NavController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-semaine',
   templateUrl: 'semaine.html'

@@ -1,7 +1,7 @@
 <div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
   <div class="flb">
     <div class="Aligner-item Aligner-item--top"></div>
-    <img src="../../assets/imgs/cmronline.png">
+    <img src="assets/imgs/cmronline.png">
     <div class="Aligner-item Aligner-item--bottom"></div>
   </div>
 </div>
@@ -10,12 +10,13 @@
     <button ion-button menuToggle="left" side="left">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title style="text-align:center;">Fil Infos</ion-title>     
+    
+    <ion-title style="text-align:center;"><img src="assets/imgs/cameroun-online.png"></ion-title>     
     <ion-buttons end ion-button >
-        <button ion-button icon-only menuToggle="right"  side="right" >
-          <ion-icon name="more"></ion-icon>
-        </button>
-      </ion-buttons>
+      <button ion-button icon-only menuToggle="right"  side="right" >
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
   <div>
       <ion-segment [(ngModel)]="pet">        
@@ -38,7 +39,7 @@
             <div style="margin-top:25%;">
             <ion-row>
                 <ion-col>
-                  <button ion-button icon-start clear small full color="primary" (click)="shareSheetShare()">
+                  <button ion-button icon-start clear small full color="primary" (click)="shareSheetShare(user.node.title,user.node.Imagedescriptives,user.node.Lien)">
                     <ion-icon name="share"></ion-icon>
                        PARTAGER
                 </button>
@@ -57,8 +58,7 @@
     </ion-list>    
     <ion-list *ngSwitchCase="'semaine'">
       <ion-card *ngFor="let user of users" >
-          <img src="{{user.node.Imagedescriptives}}" (click)="article(user)"/>
-          
+          <img src="{{user.node.Imagedescriptives}}" (click)="article(user)"/>          
           <div class="card-title" (click)="article(user)"> {{user.node.title}}</div>
           <div class="card-subtitle" (click)="article(user)">{{user.node.rubrique}}</div>
           <br>

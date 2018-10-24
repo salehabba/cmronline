@@ -6,11 +6,16 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+    <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Annonce</ion-title>
+    <ion-title>Annonce</ion-title>   
+    <ion-buttons end ion-button >
+      <button ion-button icon-only menuToggle="right"  side="right" >
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -18,12 +23,12 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-card *ngFor="let user of users7jrs" (click)="article(user)">
+    <ion-card *ngFor="let user of users" (click)="article(user)">
         <img src="{{user.node.Imagedescriptives}}"/>
         <div class="card-title">
             <h2 style="color:rgb(9, 151, 9); text-align:center;">
               <span [innerHTML] = user.node.rubrique></span></h2>
-          <h2 style="color:white; text-align:center;"><span [innerHTML] = user.node.title></span></h2>
+          <h2 style="color:#00aeee; text-align:center;"><span [innerHTML] = user.node.title></span></h2>
         </div>
         <ion-row>
             <ion-col>

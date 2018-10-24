@@ -4,16 +4,19 @@ import { HttpClient } from '@angular/common/http';
 import {Observable} from'rxjs/Observable'
 import { Platform } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular';
-import { Http, Headers} from '@angular/http';
+import { LoadingController } from 'ionic-angular';
+import { Http } from '@angular/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import 'rxjs/add/operator/map';
 import { ArticlePage } from '../article/article';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
   
+
 })
 export class HomePage {
    data:Observable<any>;
@@ -21,26 +24,28 @@ export class HomePage {
    subject:string=null;
    file:string=null;
    link:string=null;
-  pet: string = "filinfos";
-  isAndroid: boolean = false;
-  type: boolean = false;
-  pagination: number=1;
-  searchKeyword:any;
-  use:any;
-  splash = true;
-  
-  constructor(
+   pet: string = "filinfos";
+   isAndroid: boolean = false;
+   type: boolean = false;
+   pagination: number=1;
+   searchKeyword:any;
+   use:any;
+   splash = true; 
+   user7 = [];
+   count; 
+   constructor(
     public navCtrl: NavController,
       platform: Platform,
       public http: Http,
       private socialSharing: SocialSharing,
-      private toastCtrl:ToastController) 
+      private toastCtrl:ToastController,
+      public loadingCtrl: LoadingController,
+      ) 
         {
-
-
+         
       this.isAndroid = platform.is('android');
-      this.loadJson();
-      this.loadJson7jrs();  
+      this.loadJson7jrs();
+      this.loadJson();  
   }
       users:any;
       users7jrs:any;
@@ -51,39 +56,40 @@ export class HomePage {
       ionViewDidLoad() {
         setTimeout(() => this.splash = false, 5000);
       }
+   
+     /* presentLoadingCustom() {
+        let loading = this.loadingCtrl.create({
+          content: 'Please wait...'
+        });
+      
+        loading.present();
+      
+        setTimeout(() => {
+          loading.dismiss();
+        }, 5000);
+      } */
       loadJson(){
+        
        this.http.get('https://www.cameroun-online.com/fr/ionic')
        .map(res => res.json())
        .subscribe(res =>{
-         this.users = res.nodes;
-         console.log(this.users.node);
+         this.users = res.nodes;         
+         
        },(err)=>{
+         
          alert("Erreur chargement vérifier votre connexion internet");
        });
        
       }
-     doInfinite(infiniteScroll) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      this.http.get('https://www.cameroun-online.com/fr/ionic')
-       .map(res => res.json())
-       .subscribe(res =>{
-         this.users = res.nodes;
-         console.log('Async operation has ended');
-      infiniteScroll.complete();
-    }, (err)=>{
-      alert("Erreur chargement vérifier votre connexion internet");
-    });
-  })
-  }
       
       loadJson7jrs(){
+        
         this.http.get('https://www.cameroun-online.com/fr/ionic7')
         .map(res => res.json())
         .subscribe(res =>{
           this.users7jrs = res.nodes;
-        },(err)=>{
+          
+          },(err)=>{
           alert("Erreur chargement vérifier votre connexion internet");
         });
        } 
@@ -97,13 +103,27 @@ export class HomePage {
          'value7jrs':user7jrs
         });
       }
-      shareSheetShare() {
-        this.socialSharing.share("Share message", "Share subject", "URL to file or image", "A URL to share").then(() => {
+      shareSheetShare(subject,file,link) {
+        this.socialSharing.share("Toutes les infos sur Cameroun-Online",subject,file,link).then(() => {
           console.log("shareSheetShare: Success");
         }).catch(() => {
           console.error("shareSheetShare: failed");
         });
       }    
+
+      doInfinite(infiniteScroll) {
+        setTimeout(() => {
+          for (let i = 0; i < 5; i++) {   
+            this.user7.push(this.loadJson7jrs()[this.count]); // this will start pushing next 5 items
+            this.count++
+          }
+      
+          infiniteScroll.complete();
+        }, 500);
+      }
+
+
+
      infiniteScrool(ev){
        this.pagination++;
        if(this.type === false){

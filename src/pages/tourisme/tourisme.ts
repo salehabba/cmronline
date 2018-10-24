@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Http, Headers} from '@angular/http';
+import { ArticlePage } from '../article/article';
 
 /**
  * Generated class for the TourismePage page.
@@ -9,7 +10,7 @@ import { Http, Headers} from '@angular/http';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-tourisme',
   templateUrl: 'tourisme.html',
@@ -35,5 +36,10 @@ export class TourismePage {
     });
     
    }
+   article(user){
+    this.navCtrl.push(ArticlePage,{
+     'value':user
+    });
+  }
 }
 

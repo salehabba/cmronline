@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
 import { HomePage } from '../pages/home/home';
 import { ActualitésPage } from '../pages/actualités/actualités';
 import { SocietéPage } from '../pages/societé/societé';
@@ -25,21 +26,17 @@ import { AproposPage} from '../pages/apropos/apropos';
 
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
 
-
 @Component({
   templateUrl: 'app.html'
 })
-
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
   rootPage: any = HomePage;
-
-
   pages: Array<{title: string, component: any}>;
   pages2 : Array<{title: string, component: any}>;
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public menu: MenuController) {
     this.initializeApp();
+        
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -53,20 +50,17 @@ export class MyApp {
       { title: 'Tourisme', component: TourismePage }
     ];
     this.pages2 = [
-      { title: 'LANGUE', component:  LanguePage },
-      { title: 'NOTIFICATION', component:  NotificationPage },
-      { title: 'TAILLE TEXTE', component: TalletextePage },
+     { title: 'LANGUE', component:  LanguePage },
+      //{ title: 'NOTIFICATION', component:  NotificationPage },
+     // { title: 'TAILLE TEXTE', component: TalletextePage },
       { title: 'AIDE', component: AidePage },
       { title: 'CONTACT', component: ContactPage },
       { title: 'EVALUER APPLI', component: EvaluerappliPage },
-      { title: 'A PROPOS', component: AproposPage }
-      
-    ];
-  
+      { title: 'A PROPOS', component: AproposPage }      
+    ];  
     this.menu.enable(true, 'menu1');
     this.menu.enable(true, 'menu2');
   }
-
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -76,10 +70,10 @@ export class MyApp {
       
     });
   }
-
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
 }

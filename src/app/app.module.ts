@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 import { MyApp } from './app.component';
@@ -25,6 +26,7 @@ import { AidePage} from '../pages/aide/aide';
 import { ContactPage} from '../pages/contact/contact';
 import { EvaluerappliPage} from '../pages/evaluerappli/evaluerappli';
 import { AproposPage} from '../pages/apropos/apropos';
+import {SplashscreenPage} from '../pages/splashscreen/splashscreen';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -53,11 +55,8 @@ import { RestProvider } from '../providers/rest/rest';
     AidePage,
     ContactPage,
     EvaluerappliPage,
-    AproposPage
-
-
- 
-    
+    AproposPage,
+    SplashscreenPage    
 
   ],
   imports: [
@@ -82,6 +81,12 @@ import { RestProvider } from '../providers/rest/rest';
     AlaunePage,
     SemainePage,
     ArticlePage,
+    NotificationPage,
+    TalletextePage,
+    AidePage,
+    ContactPage,
+    EvaluerappliPage,
+    AproposPage,
 
     
   ],
@@ -90,7 +95,8 @@ import { RestProvider } from '../providers/rest/rest';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
-    SocialSharing
+    SocialSharing,
+    LocalNotifications
 
   ]
 })

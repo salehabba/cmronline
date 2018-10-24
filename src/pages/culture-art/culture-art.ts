@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {  NavController, NavParams } from 'ionic-angular';
 import { Http, Headers} from '@angular/http';
+import { ArticlePage } from '../article/article';
 
 /**
  * Generated class for the CultureArtPage page.
@@ -9,7 +10,7 @@ import { Http, Headers} from '@angular/http';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-culture-art',
   templateUrl: 'culture-art.html',
@@ -35,5 +36,10 @@ export class CultureArtPage {
     });
     
    }
+   article(user){
+    this.navCtrl.push(ArticlePage,{
+     'value':user
+    });
+  }
 }
 

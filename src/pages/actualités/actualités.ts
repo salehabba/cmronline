@@ -35,10 +35,6 @@ export class ActualitésPage {
       console.log(this.users.node);
     },(err)=>{
       alert("Erreur chargement vérifier votre connexion internet");
-    });
-    
+    });    
    }
-
 }
-
-

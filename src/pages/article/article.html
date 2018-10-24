@@ -5,13 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>
-        {{info.node.title}}
-    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{info.node.title}}</ion-title>   
+    <ion-buttons end ion-button >
+      <button ion-button icon-only menuToggle="right"  side="right" >
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -36,7 +40,7 @@
      </p>
      <div class="sharearticle">
         
-            <button ion-button icon-start clear small full color="light" (click)="shareSheetShare()">
+            <button ion-button icon-start clear small full color="light" (click)="shareSheetShare(user.node.title,user.node.Imagedescriptives,info.node.Lien)">
                 <ion-icon name="share"></ion-icon>
                 PARTAGE
                 
